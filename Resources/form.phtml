@@ -1,0 +1,7 @@
+<form action="<?php echo urlencode($form->getAction()); ?>" method="<?php echo $form->getMethod(); ?>"<?php if($form->isMultipart()): ?> enctype="multipart/form-data"<?php endif; ?>>
+<?php foreach($form->elements() as $element): ?>
+    <p>
+<?php echo $this->renderElement($element, $form); ?>
+    </p>
+<?php endforeach; ?>
+</form>

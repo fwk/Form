@@ -1,0 +1,23 @@
+{
+    "name": "fwk/form",
+    "description": "Fwk Form Library",
+    "type": "library",
+    "keywords": ["framework", "form", "html", "library"],
+    "license": "BSD",
+    "authors": [
+        {
+            "name": "neiluJ",
+            "email": "julien@nitronet.org"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "fwk/events": "dev-master"
+    },
+    "autoload": {
+        "psr-0": {
+            "Fwk\\Form": ""
+        }
+    },
+    "target-dir": "Fwk/Form"
+}

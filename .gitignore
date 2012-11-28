@@ -1,0 +1,7 @@
+vendor
+/phpunit.xml
+/hljs/
+/test.php
+/build/
+/app
+/composer.lock

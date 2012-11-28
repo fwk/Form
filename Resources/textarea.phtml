@@ -1,0 +1,16 @@
+<?php use Fwk\Form\Element, Fwk\Form\Elements\TextArea; ?>
+<?php if($element->hasLabel() &&
+        $element->attribute(Element::ATTR_LABEL_POSITION, Element::LABEL_POSITION_LEFT) == Element::LABEL_POSITION_LEFT): ?>
+        <label for="<?php echo $element->attribute(Element::ATTR_ID, $element->getName()); ?>"><?php echo htmlspecialchars($element->getLabel()); ?></label>
+<?php endif; ?>
+        <textarea<?php
+foreach($element->attributes() as $attr => $value):
+if(strpos($attr, '_', 0) !== false || $attr == Element::ATTR_VALUE) { continue; }
+?> <?php echo $attr; ?>="<?php echo htmlspecialchars($value); ?>"<?php endforeach; ?>><?php echo htmlspecialchars($element->valueOrDefault()); ?></textarea>
+<?php if($element->hasHint()): ?>
+        <span class="hint"><?php echo htmlspecialchars($element->getHint()); ?></span>
+<?php endif; ?>
+<?php if($element->hasLabel() &&
+        $element->attribute(Element::ATTR_LABEL_POSITION) == Element::LABEL_POSITION_RIGHT): ?>
+        <label for="<?php echo $element->attribute(Element::ATTR_ID, $element->getName()); ?>"><?php echo htmlspecialchars($element->getLabel()); ?></label>
+<?php endif; ?>

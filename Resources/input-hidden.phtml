@@ -1,0 +1,8 @@
+<?php use Fwk\Form\Element; ?>
+        <input type="hidden"<?php
+foreach($element->attributes() as $attr => $value):
+if(strpos($attr, '_', 0) !== false || $attr == Element::ATTR_VALUE) { continue; }
+?> <?php echo $attr; ?>="<?php echo htmlspecialchars($value); ?>"<?php endforeach; ?><?php
+    $value = $element->valueOrDefault();
+    if(!empty($value)):
+?> value="<?php echo htmlspecialchars($element->valueOrDefault()); ?><?php endif; ?> />
