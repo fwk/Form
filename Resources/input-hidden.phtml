@@ -5,4 +5,4 @@ if(strpos($attr, '_', 0) !== false || $attr == Element::ATTR_VALUE) { continue; 
 ?> <?php echo $attr; ?>="<?php echo htmlspecialchars($value); ?>"<?php endforeach; ?><?php
     $value = $element->valueOrDefault();
     if(!empty($value)):
-?> value="<?php echo htmlspecialchars($element->valueOrDefault()); ?><?php endif; ?> />
+?> value="<?php echo htmlspecialchars($element->valueOrDefault()); ?>"<?php endif; ?> />
