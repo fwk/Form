@@ -74,6 +74,11 @@ class Form extends Dispatcher implements \IteratorAggregate
      * @var boolean
      */
     protected $submitted    = false;
+    
+    /**
+     * @var array
+     */
+    protected $filters      = array();
 
     /**
      *
@@ -391,6 +396,18 @@ class Form extends Dispatcher implements \IteratorAggregate
             }
         }
 
+        // check Form-level filters only if all elements validate
+        if (!count($errors)) {
+            foreach ($this->filters as $valid) {
+                $filter  = $valid['filter'];
+                $err     = $valid['error'];
+                if (!$filter->validate($this)) {
+                     $errors['__form'] = (empty($err) ? true : $err);
+                     break;
+                }
+            }
+        }
+        
         $this->errors = $errors;
         if (count($errors)) {
             return false;
@@ -490,5 +507,22 @@ class Form extends Dispatcher implements \IteratorAggregate
     public function __unset($element)
     {
         $this->element($element)->setValue(null);
+    }
+    
+    
+    /**
+     *
+     * @param Filter $filter
+     *
+     * @return Element
+     */
+    public function filter(Filter $filter, $errorMessage = null)
+    {
+        $this->filters[] = array(
+            'filter'    => $filter,
+            'error'     => $errorMessage
+        );
+        
+        return $this;
     }
 }
