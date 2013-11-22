@@ -39,6 +39,10 @@ class UrlFilter implements Filter
 {
     public function validate($value = null)
     {
+        if (empty($value)) { 
+            return true;
+        }
+
         return (bool)filter_var($value, \FILTER_VALIDATE_URL, FILTER_NULL_ON_FAILURE);
     }
 }
